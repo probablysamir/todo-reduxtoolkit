@@ -12,19 +12,8 @@ interface InitialState {
 }
 
 const initialState: InitialState = {
-  todoList: [
-    {
-      id: 1,
-      text: "hi",
-      complete: false,
-    },
-    {
-      id: 2,
-      text: "hie",
-      complete: false,
-    },
-  ],
-  lastId: 2,
+  todoList: [],
+  lastId: 0,
 };
 
 const noteSlice = createSlice({
@@ -46,8 +35,8 @@ const noteSlice = createSlice({
       index !== -1 && state.todoList.splice(index, 1);
     },
     completeTodo: (state, action: PayloadAction<number>) => {
-        const index = state.todoList.findIndex((todo) => todo.id === action.payload);
-        index !== -1 ? state.todoList[index].complete=true:null;
+      const index = state.todoList.findIndex((todo) => todo.id === action.payload);
+      index !== -1 ? (state.todoList[index].complete = true) : null;
     },
   },
 });
